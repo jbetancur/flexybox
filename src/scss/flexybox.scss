@@ -1,5 +1,6 @@
 $gutter-width: .1em !default;
 $columns: 12 !default;
+
 $breakpoints: (
         xs: '(min-width: 0) and (max-width: 599px)',
         sm: '(min-width: 600px) and (max-width: 959px)',
@@ -33,9 +34,13 @@ $breakpoints: (
 }
 
 @mixin rowMachine($numCol, $columns, $gutter) {
-  $width: calc(#{percentage($numCol / $columns)} - #{$gutter} * 2);
-  position: relative;
+  $width: percentage($numCol / $columns);
+  @if $gutter > 0 {
+    $width: calc(#{$width} - #{$gutter} * 2);
+  }
+
   @include flex(0 0 $width);
+  position: relative;
   width: $width;
   max-width: 100%;
   min-height: 1px;
@@ -44,11 +49,11 @@ $breakpoints: (
 
 %flexit {
   @include flex-wrap(nowrap);
-  display: -webkit-box;      /* iOS 6-, Safari 3.1-6 */
-  display: -moz-box;         /* Firefox 19- (buggy but mostly works) */
-  display: -ms-flexbox;      /* IE 10 -_- */
-  display: -webkit-flex;     /* MODERN - Chrome */
-  display: flex;             /* MODERN, Spec - Opera 12.1, Firefox 20+ */
+  display: -webkit-box; /* iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* IE 10 -_- */
+  display: -webkit-flex; /* MODERN - Chrome */
+  display: flex; /* MODERN, Spec - Opera 12.1, Firefox 20+ */
   min-height: 100%;
   width: 100%;
 }
