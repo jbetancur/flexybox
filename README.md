@@ -6,7 +6,7 @@ Work in Progress...
 
 ## Feature Roadmap
 * Offsets
-* Documentation
+* Documentation/Examples
 * Live Demo
 
 
