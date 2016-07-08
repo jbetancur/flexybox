@@ -20,6 +20,12 @@ Work in Progress...
 
 http://codepen.io/johnnyazee/pen/AXoWkm
 
+## Contributing
+You must be running nodejs version => 6.3.0
+```
+npm install
+gulp
+```
 
 # A little help:
 * https://css-tricks.com/using-flexbox/
