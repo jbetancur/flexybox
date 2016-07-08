@@ -1,0 +1,113 @@
+$gutter-width: .1em !default;
+$columns: 12 !default;
+$breakpoints: (
+        xs: '(min-width: 0) and (max-width: 599px)',
+        sm: '(min-width: 600px) and (max-width: 959px)',
+        md: '(min-width: 960px) and (max-width: 1280px)',
+        lg: 'only screen and (min-width: 1280px)'
+);
+
+@mixin prefix($property, $value, $vendors: webkit moz ms o) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{'-' + $vendor + '-' + $property}: #{$value};
+    }
+  }
+  #{$property}: #{$value};
+}
+
+@mixin flex($value) {
+  @include prefix(flex, $value, webkit ms);
+}
+
+@mixin flex-direction($value) {
+  @include prefix(flex-direction, $value, webkit ms);
+}
+
+@mixin flex-wrap($value) {
+  @include prefix(flex-wrap, $value, webkit);
+}
+
+@mixin justify-content($value) {
+  @include prefix(justify-content, $value, webkit);
+}
+
+@mixin rowMachine($numCol, $columns, $gutter) {
+  $width: calc(#{percentage($numCol / $columns)} - #{$gutter} * 2);
+  position: relative;
+  @include flex(0 0 $width);
+  width: $width;
+  max-width: 100%;
+  min-height: 1px;
+  margin: $gutter-width;
+  min-width: 100px; // TODO: REMOVE
+  background-color: cornflowerblue; // TODO: REMOVE
+}
+
+%flexit {
+  @include flex-wrap(nowrap);
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  min-height: 100%;
+  width: 100%;
+  height: 100px;
+  background-color: lightgrey; // TODO: REMOVE
+}
+
+%decorators {
+  &.wrap {
+    @include flex-wrap(wrap);
+  }
+  &.reverse {
+    @include flex-direction(row-reverse);
+  }
+  &.wrap-reverse {
+    @include flex-wrap(wrap-reverse);
+  }
+  &.center {
+    @include justify-content(center);
+  }
+  &.start {
+    @include justify-content(flex-start);
+  }
+  &.end {
+    @include justify-content(flex-end);
+  }
+  &.between {
+    @include justify-content(space-between);
+  }
+  &.around {
+    @include justify-content(space-around);
+  }
+}
+
+.column {
+  @extend %flexit;
+  @extend %decorators;
+  @include flex-direction(column);
+}
+
+.row {
+  @extend %flexit;
+  @extend %decorators;
+  @include flex-direction(row);
+}
+
+// Generate Simple
+@for $i from 1 through $columns {
+  .col-#{$i} {
+    @include rowMachine($i, $columns, $gutter-width);
+  }
+}
+
+//Generate @media specific
+@each $name, $value in $breakpoints {
+  @media #{$value} {
+    @for $i from 1 through $columns {
+      .col-#{$name}-#{$i} {
+        @include rowMachine($i, $columns, $gutter-width);
+      }
+    }
+  }
+}

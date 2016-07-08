@@ -1,0 +1,23 @@
+{
+  "name": "flexybox",
+  "version": "0.1.0",
+  "description": "simple flex",
+  "scripts": {
+    "deploy": "wip"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbetancur/flexybox.git"
+  },
+  "keywords": [
+    "flexbox",
+    "flex",
+    "css"
+  ],
+  "author": "John Betancur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jbetancur/flexybox/issues"
+  },
+  "homepage": "https://github.com/jbetancur/flexybox#readme"
+}
