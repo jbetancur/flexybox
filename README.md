@@ -22,5 +22,5 @@ http://codepen.io/johnnyazee/pen/AXoWkm
 
 
 # A little help:
-https://css-tricks.com/using-flexbox/
-https://www.sitepoint.com/sass-mixins-kickstart-project/
+* https://css-tricks.com/using-flexbox/
+* https://www.sitepoint.com/sass-mixins-kickstart-project/
