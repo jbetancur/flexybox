@@ -25,7 +25,11 @@ gulp.task('build-css', ['clean'], ()=> {
             console.log(`Before: ${details.name}:${details.stats.originalSize}`);
             console.log(`After: ${details.name}:${details.stats.minifiedSize}`);
         }))
-        .pipe(gsourcemaps.write())
+        .pipe(gsourcemaps.write('./', {
+            sourceMappingURL: file => {
+                return file.relative + '.map';
+            }
+        }))
         .pipe(grename({
             suffix: '.min'
         }))
