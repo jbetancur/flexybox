@@ -1,6 +1,13 @@
 $gutter-width: .1em !default;
-$max-columns: 12 !default;
-$breakpoints: (xs: '(min-width: 0) and (max-width: 599px)', sm: '(min-width: 600px) and (max-width: 959px)', md: '(min-width: 960px) and (max-width: 1280px)', lg: 'only screen and (min-width: 1280px)');
+$columns: 12 !default;
+
+$breakpoints: (
+        xs: '(min-width: 0) and (max-width: 599px)',
+        sm: '(min-width: 600px) and (max-width: 959px)',
+        md: '(min-width: 960px) and (max-width: 1280px)',
+        lg: 'only screen and (min-width: 1280px)'
+);
+
 @mixin prefix($property, $value, $vendors: webkit moz ms o) {
   @if $vendors {
     @each $vendor in $vendors {
@@ -27,36 +34,37 @@ $breakpoints: (xs: '(min-width: 0) and (max-width: 599px)', sm: '(min-width: 600
 }
 
 @mixin rowMachine($numCol, $columns, $gutter) {
-  $width: calc(#{percentage($numCol / $columns)} - #{$gutter} * 2);
-  @include flex(0 1 auto);
-  min-width: $width;
+  position: relative;
+  $width: percentage($numCol / $columns);
+  @include flex(0 0 $width);
+  width: $width;
   max-width: 100%;
   min-height: 1px;
-  margin: $gutter;
-  box-sizing: border-box;
+  min-width: 100px; // TODO: REMOVE
+  background-color: cornflowerblue; // TODO: REMOVE
+  margin: 0;
 
-  &.flex-grow {
-    flex: 1 1 auto;
-  }
-
-  &.flex-auto {
-    flex: 1 1 auto;
-  }
-
-  &.flex-none {
-    flex: 0 0 auto;
+  &.gutter {
+    @if $gutter > 0 {
+      $width: calc(#{$width} - #{$gutter} * 2);
+      @include flex(0 0 $width);
+      width: $width;
+    }
+    margin: $gutter;
   }
 }
 
 %flexit {
   @include flex-wrap(nowrap);
-  display: -webkit-box; /* iOS 6-, Safari 3.1-6 */
-  display: -moz-box; /* Firefox 19- (buggy but mostly works) */
-  display: -ms-flexbox; /* IE 10 -_- */
-  display: -webkit-flex; /* MODERN - Chrome */
-  display: flex; /* MODERN, Spec - Opera 12.1, Firefox 20+ */
+  display: -webkit-box;      /* iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* IE 10 -_- */
+  display: -webkit-flex;     /* MODERN - Chrome */
+  display: flex;             /* MODERN, Spec - Opera 12.1, Firefox 20+ */
   min-height: 100%;
   width: 100%;
+  height: 100px;  // TODO: REMOVE
+  background-color: lightgrey; // TODO: REMOVE
 }
 
 %decorators {
@@ -99,19 +107,18 @@ $breakpoints: (xs: '(min-width: 0) and (max-width: 599px)', sm: '(min-width: 600
 }
 
 // Generate Simple
-@for $i from 1 through $max-columns {
+@for $i from 1 through $columns {
   .col-#{$i} {
-    @include rowMachine($i, $max-columns, $gutter-width);
+    @include rowMachine($i, $columns, $gutter-width);
   }
 }
 
 //Generate @media specific
-@each $name,
-$value in $breakpoints {
+@each $name, $value in $breakpoints {
   @media #{$value} {
-    @for $i from 1 through $max-columns {
+    @for $i from 1 through $columns {
       .col-#{$name}-#{$i} {
-        @include rowMachine($i, $max-columns, $gutter-width);
+        @include rowMachine($i, $columns, $gutter-width);
       }
     }
   }
