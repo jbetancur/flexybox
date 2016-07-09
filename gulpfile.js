@@ -8,21 +8,22 @@ const gulp = require('gulp'),
 const flexySrc = 'src/scss/flexybox.scss',
     flexyDest = 'dist';
 
-gulp.task('default', ['clean', 'build-css']);
+gulp.task('default', ['build-css']);
 
 gulp.task('clean', ()=> {
     return gulp.src(flexyDest, { read: false })
         .pipe(gclean());
 });
 
-gulp.task('build-css', ()=> {
+gulp.task('build-css', ['clean'], ()=> {
     return gulp.src(flexySrc)
+        .pipe(gulp.dest(flexyDest))
         .pipe(gsourcemaps.init())
         .pipe(gsass())
         .pipe(gulp.dest(flexyDest))
         .pipe(gcleanCSS({ debug: true }, details => {
-            console.log(`${details.name}:${details.stats.originalSize}`);
-            console.log(`${details.name}:${details.stats.minifiedSize}`);
+            console.log(`Before: ${details.name}:${details.stats.originalSize}`);
+            console.log(`After: ${details.name}:${details.stats.minifiedSize}`);
         }))
         .pipe(gsourcemaps.write())
         .pipe(grename({

@@ -1,6 +1,13 @@
 $gutter-width: .1em !default;
 $max-columns: 12 !default;
-$breakpoints: (xs: '(min-width: 0) and (max-width: 599px)', sm: '(min-width: 600px) and (max-width: 959px)', md: '(min-width: 960px) and (max-width: 1280px)', lg: 'only screen and (min-width: 1280px)');
+
+$breakpoints: (
+        xs: '(min-width: 0) and (max-width: 599px)',
+        sm: '(min-width: 600px) and (max-width: 959px)',
+        md: '(min-width: 960px) and (max-width: 1280px)',
+        lg: 'only screen and (min-width: 1280px)'
+);
+
 @mixin prefix($property, $value, $vendors: webkit moz ms o) {
   @if $vendors {
     @each $vendor in $vendors {
@@ -63,24 +70,31 @@ $breakpoints: (xs: '(min-width: 0) and (max-width: 599px)', sm: '(min-width: 600
   &.wrap {
     @include flex-wrap(wrap);
   }
+
   &.reverse {
     @include flex-direction(row-reverse);
   }
+
   &.wrap-reverse {
     @include flex-wrap(wrap-reverse);
   }
+
   &.center {
     @include justify-content(center);
   }
+
   &.start {
     @include justify-content(flex-start);
   }
+
   &.end {
     @include justify-content(flex-end);
   }
+
   &.between {
     @include justify-content(space-between);
   }
+
   &.around {
     @include justify-content(space-around);
   }
