@@ -42,15 +42,11 @@ $breakpoints: (
   margin: $gutter;
   box-sizing: border-box;
 
-  &.flex-grow {
+  &.grow {
     flex: 1 1 auto;
   }
 
-  &.flex-auto {
-    flex: 1 1 auto;
-  }
-
-  &.flex-none {
+  &.none {
     flex: 0 0 auto;
   }
 }
