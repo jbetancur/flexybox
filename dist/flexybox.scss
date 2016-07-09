@@ -33,12 +33,15 @@ $breakpoints: (
   @include prefix(justify-content, $value, webkit);
 }
 
-@mixin rowMachine($numCol, $columns, $gutter) {
-  $width: calc(#{percentage($numCol / $columns)} - #{$gutter} * 2);
+[class*='.col-'] {
   @include flex(0 1 auto);
-  min-width: $width;
   max-width: 100%;
   min-height: 1px;
+}
+
+@mixin rowMachine($numCol, $columns, $gutter) {
+  $width: calc(#{percentage($numCol / $columns)} - #{$gutter} * 2);
+  min-width: $width;
   margin: $gutter;
   box-sizing: border-box;
 
@@ -62,7 +65,13 @@ $breakpoints: (
   width: 100%;
 }
 
-%decorators {
+%styles {
+  [class*='col-'] {
+    @include flex(0 1 auto);
+    max-width: 100%;
+    min-height: 1px;
+  }
+
   &.wrap {
     @include flex-wrap(wrap);
   }
@@ -98,13 +107,13 @@ $breakpoints: (
 
 .column {
   @extend %flexit;
-  @extend %decorators;
+  @extend %styles;
   @include flex-direction(column);
 }
 
 .row {
   @extend %flexit;
-  @extend %decorators;
+  @extend %styles;
   @include flex-direction(row);
 }
 
