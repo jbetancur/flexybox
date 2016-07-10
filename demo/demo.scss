@@ -1,0 +1,39 @@
+$md-blue-100: #bbdefb;
+$md-grey-400: #bdbdbd;
+$md-grey-50: #fafafa;
+$md-blue-grey-50: #eceff1;
+$md-orange-500: #ff9800;
+
+body {
+
+}
+
+.container {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: $md-blue-grey-50;
+}
+
+.hero {
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 2em;
+  background-color: $md-grey-50;
+  height: 100px;
+  text-align: center;
+
+  .hero-title {
+    font-size: 2em;
+  }
+}
+
+.demo-item {
+  height: 50px;
+  background-color: $md-orange-500;
+
+  &.min {
+    min-width: 50px;
+  }
+}
+

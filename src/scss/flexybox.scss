@@ -1,5 +1,6 @@
-$gutter-width: .1em !default;
+$gutter-width: 1px !default;
 $max-columns: 12 !default;
+$prefix: 'flex' !default;
 
 $breakpoints: (
         xs: '(min-width: 0) and (max-width: 599px)',
@@ -7,37 +8,6 @@ $breakpoints: (
         md: '(min-width: 960px) and (max-width: 1280px)',
         lg: 'only screen and (min-width: 1280px)'
 );
-
-@mixin prefix($property, $value, $vendors: webkit moz ms o) {
-  @if $vendors {
-    @each $vendor in $vendors {
-      #{'-' + $vendor + '-' + $property}: #{$value};
-    }
-  }
-  #{$property}: #{$value};
-}
-
-@mixin flex($value) {
-  @include prefix(flex, $value, webkit ms);
-}
-
-@mixin flex-direction($value) {
-  @include prefix(flex-direction, $value, webkit ms);
-}
-
-@mixin flex-wrap($value) {
-  @include prefix(flex-wrap, $value, webkit);
-}
-
-@mixin justify-content($value) {
-  @include prefix(justify-content, $value, webkit);
-}
-
-[class*='.col-'] {
-  @include flex(0 1 auto);
-  max-width: 100%;
-  min-height: 1px;
-}
 
 @mixin rowMachine($numCol, $columns, $gutter) {
   $width: calc(#{percentage($numCol / $columns)} - #{$gutter} * 2);
@@ -55,71 +25,64 @@ $breakpoints: (
 }
 
 %flexit {
-  @include flex-wrap(nowrap);
-  display: -webkit-box; /* iOS 6-, Safari 3.1-6 */
-  display: -moz-box; /* Firefox 19- (buggy but mostly works) */
-  display: -ms-flexbox; /* IE 10 -_- */
-  display: -webkit-flex; /* MODERN - Chrome */
-  display: flex; /* MODERN, Spec - Opera 12.1, Firefox 20+ */
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  display: flex;
   min-height: 100%;
   width: 100%;
+  flex: 0 1 auto;
 }
 
 %styles {
-  [class*='col-'] {
-    @include flex(0 1 auto);
-    max-width: 100%;
-    min-height: 1px;
-  }
 
-  &.wrap {
-    @include flex-wrap(wrap);
+  &.no-wrap {
+    flex-wrap: nowrap;
   }
 
   &.reverse {
-    @include flex-direction(row-reverse);
+    flex-direction: row-reverse;
   }
 
   &.wrap-reverse {
-    @include flex-wrap(wrap-reverse);
+    flex-wrap: wrap-reverse;
   }
 
   &.center {
-    @include justify-content(center);
+    justify-content: center;
   }
 
   &.start {
-    @include justify-content(flex-start);
+    justify-content: flex-start;
   }
 
   &.end {
-    @include justify-content(flex-end);
+    justify-content: flex-end;
   }
 
   &.between {
-    @include justify-content(space-between);
+    justify-content: space-between;
   }
 
   &.around {
-    @include justify-content(space-around);
+    justify-content: space-around;
   }
 }
 
 .column {
   @extend %flexit;
   @extend %styles;
-  @include flex-direction(column);
+  flex-direction: column;
 }
 
 .row {
   @extend %flexit;
   @extend %styles;
-  @include flex-direction(row);
+  flex-direction: row;
 }
 
 // Generate Simple
 @for $i from 1 through $max-columns {
-  .col-#{$i} {
+  .#{$prefix}-#{$i} {
     @include rowMachine($i, $max-columns, $gutter-width);
   }
 }
@@ -129,7 +92,7 @@ $breakpoints: (
 $value in $breakpoints {
   @media #{$value} {
     @for $i from 1 through $max-columns {
-      .col-#{$name}-#{$i} {
+      .#{$prefix}-#{$name}-#{$i} {
         @include rowMachine($i, $max-columns, $gutter-width);
       }
     }

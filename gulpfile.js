@@ -2,6 +2,7 @@ const gulp = require('gulp'),
     gclean = require('gulp-clean'),
     gsass = require('gulp-sass'),
     gsourcemaps = require('gulp-sourcemaps'),
+    gautoprefixer = require('gulp-autoprefixer'),
     gcleanCSS = require('gulp-clean-css'),
     grename = require("gulp-rename");
 
@@ -20,6 +21,10 @@ gulp.task('build-css', ['clean'], ()=> {
         .pipe(gulp.dest(flexyDest))
         .pipe(gsourcemaps.init())
         .pipe(gsass())
+        .pipe(gautoprefixer({
+            browsers: ['last 10 versions', 'IE 10'],
+            cascade: false
+        }))
         .pipe(gulp.dest(flexyDest))
         .pipe(gcleanCSS({ debug: true }, details => {
             console.log(`Before: ${details.name}:${details.stats.originalSize}`);

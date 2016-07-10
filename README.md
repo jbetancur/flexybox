@@ -17,6 +17,7 @@ Work in Progress...
 * IE 10+
 * Opera 12.1+
 * iOS
+* Android
 
 http://codepen.io/johnnyazee/pen/AXoWkm
 
@@ -27,6 +28,6 @@ npm install
 gulp
 ```
 
-# A little help:
+## A little help:
 * https://css-tricks.com/using-flexbox/
-* https://www.sitepoint.com/sass-mixins-kickstart-project/
+* https://css-tricks.com/snippets/css/a-guide-to-flexbox/
