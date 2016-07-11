@@ -6,23 +6,29 @@ const gulp = require('gulp'),
     gcleanCSS = require('gulp-clean-css'),
     grename = require("gulp-rename");
 
-const flexySrc = 'src/scss/flexybox.scss',
-    flexyDest = 'dist';
+const flexySrc = 'src/flexybox/flexybox.scss',
+    flexyDest = 'dist',
+    demoSrc = 'src/demo',
+    demoDest = 'demo',
+    autoPrefixBrowserCompat = ['last 10 versions', 'IE 10'];
 
-gulp.task('default', ['build-css']);
+gulp.task('default', ['build-css', 'build-demo']);
 
 gulp.task('clean', ()=> {
     return gulp.src(flexyDest, { read: false })
         .pipe(gclean());
 });
 
+/**
+ * FlexyBox
+ */
 gulp.task('build-css', ['clean'], ()=> {
     return gulp.src(flexySrc)
         .pipe(gulp.dest(flexyDest))
         .pipe(gsourcemaps.init())
         .pipe(gsass())
         .pipe(gautoprefixer({
-            browsers: ['last 10 versions', 'IE 10'],
+            browsers: autoPrefixBrowserCompat,
             cascade: false
         }))
         .pipe(gulp.dest(flexyDest))
@@ -39,4 +45,28 @@ gulp.task('build-css', ['clean'], ()=> {
             suffix: '.min'
         }))
         .pipe(gulp.dest(flexyDest));
+});
+
+
+/**
+ * Demo
+ */
+gulp.task('build-demo', ['copy-demo-files', 'copy-libs'], ()=> {
+    return gulp.src(`${demoSrc}/demo.scss`)
+        .pipe(gsass())
+        .pipe(gautoprefixer({
+            browsers: autoPrefixBrowserCompat,
+            cascade: false
+        }))
+        .pipe(gulp.dest(demoDest));
+});
+
+gulp.task('copy-demo-files', [], ()=> {
+    return gulp.src(`${demoSrc}/index.html`)
+        .pipe(gulp.dest(demoDest));
+});
+
+gulp.task('copy-libs', [], ()=> {
+    return gulp.src(`${flexyDest}/flexybox.css`)
+        .pipe(gulp.dest(demoDest));
 });
