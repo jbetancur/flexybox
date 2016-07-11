@@ -2,10 +2,11 @@
 
 a simple lightweight cross browser flex grid framework written in SCSS
 
+## Live Demo
+http://flexybox-docs.pubstorm.site/
+
 ## Feature Roadmap
 * Offsets
-* Documentation/Examples
-* Live Demo
 
 ## Supported Browsers
 * Chrome
@@ -17,6 +18,7 @@ a simple lightweight cross browser flex grid framework written in SCSS
 * iOS
 * Android
 
+## CodePen
 http://codepen.io/johnnyazee/pen/AXoWkm
 
 ## Development

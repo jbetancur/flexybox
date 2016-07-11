@@ -6,7 +6,8 @@ const gulp = require('gulp'),
     gcleanCSS = require('gulp-clean-css'),
     grename = require("gulp-rename");
 
-const flexySrc = 'src/flexybox/flexybox.scss',
+const pkg = require('./package.json'),
+    flexySrc = 'src/flexybox/flexybox.scss',
     flexyDest = 'dist',
     demoSrc = 'src/demo',
     demoDest = 'demo',
@@ -24,6 +25,9 @@ gulp.task('clean', ()=> {
  */
 gulp.task('build-css', ['clean'], ()=> {
     return gulp.src(flexySrc)
+        // .pipe(grename({
+        //     suffix: `.${pkg.version}`
+        // }))
         .pipe(gulp.dest(flexyDest))
         .pipe(gsourcemaps.init())
         .pipe(gsass())
