@@ -73,7 +73,7 @@ body {
 
 .section {
   font-family: "Ubuntu", Arial;
-  padding-top: 4em;
+  padding-top: 2em;
   padding-left: 1em;
   padding-right: 1em;
   max-width: 1200px;
@@ -82,6 +82,16 @@ body {
     list-style-type: none;
   }
 
+}
+
+.footer {
+  text-align: center;
+  padding: 2em;
+
+  a {
+    color: $md-blue-400;
+    text-decoration: none;
+  }
 }
 
 pre {
@@ -99,7 +109,7 @@ code {
 .hero {
   font-size: 2em;
   background-color: $md-grey-100;
-  height: 175px;
+  min-height: 200px;
   text-align: center;
 
   .hero-title {
@@ -107,8 +117,11 @@ code {
   }
 
   .hero-subtitle {
-    text-align: center;
     font-size: .6em;
+  }
+
+  .hero-actions {
+    padding-top: 1em;
   }
 
 }
