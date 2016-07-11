@@ -1,0 +1,173 @@
+$gutter-width: 1px !default;
+$max-columns: 12 !default;
+$prefix: 'flex' !default;
+
+$breakpoints: (
+        xs: '(min-width: 0) and (max-width: 599px)',
+        sm: '(min-width: 600px) and (max-width: 959px)',
+        md: '(min-width: 960px) and (max-width: 1280px)',
+        lg: 'only screen and (min-width: 1280px)'
+);
+
+@mixin rowMachine($numCol, $columns, $gutter) {
+  $width: calc(#{percentage($numCol / $columns)} - #{$gutter} * 2);
+  min-width: $width;
+  margin: $gutter;
+  box-sizing: border-box;
+  // Safari requires a specific width be set -_-
+  flex: 0 1 $width;
+  // IE 10 Fix to flex wrap -_-
+  -ms-flex-positive: 0;
+  -ms-flex-negative: 1;
+  -ms-flex-preferred-size: auto;
+
+  &.grow {
+    flex: 1 1 auto;
+  }
+
+  &.none {
+    flex: 0 0 auto;
+  }
+}
+
+%flexit {
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+}
+
+%styles {
+  &.no-wrap {
+    flex-wrap: nowrap;
+  }
+
+  &.wrap-reverse {
+    flex-wrap: wrap-reverse;
+  }
+
+  &.row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  &.column-reverse {
+    flex-direction: column-reverse;
+  }
+
+  &.start-start,
+  .center-start,
+  .end-start,
+  .space-between-start,
+  .space-around-start {
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+
+  &.start-center,
+  .center-center,
+  .end-center,
+  .space-between-center,
+  .space-around-center {
+    align-items: center;
+    align-content: center;
+    max-width: 100%;
+  }
+
+  &.start-end,
+  .center-end,
+  .end-end,
+  .space-between-end,
+  .space-around-end {
+    align-items: flex-end;
+    align-content: flex-end;
+  }
+
+  &.start-stretch,
+  .center-stretch,
+  .end-stretch,
+  .space-between-stretch,
+  .space-around-stretch {
+    align-items: stretch;
+    align-content: stretch;
+  }
+
+  &.start,
+  .start-start,
+  .start-center,
+  .start-end,
+  .start-stretch {
+    justify-content: flex-start;
+  }
+
+  &.center,
+  .center-start,
+  .center-center,
+  .center-end,
+  .center-stretch {
+    justify-content: center;
+  }
+
+  &.end,
+  .end-start,
+  .end-center,
+  .end-end,
+  .end-stretch {
+    justify-content: flex-end;
+  }
+
+  &.space-around,
+  .space-around-center,
+  .space-around-start,
+  .space-around-end,
+  .space-around-stretch {
+    justify-content: space-around;
+  }
+
+  &.space-between,
+  .space-between-center,
+  .space-between-start,
+  .space-between-end,
+  .space-between-stretch {
+    justify-content: space-between;
+  }
+
+  &.start-center > *,
+  .center-center > *,
+  .end-center > *,
+  .space-between-center > *,
+  .space-around-center > * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.column {
+  @extend %flexit;
+  @extend %styles;
+  flex-direction: column;
+}
+
+.row {
+  @extend %flexit;
+  @extend %styles;
+  flex-direction: row;
+}
+
+// Generate Simple
+@for $i from 1 through $max-columns {
+  .#{$prefix}-#{$i} {
+    @include rowMachine($i, $max-columns, $gutter-width);
+  }
+}
+
+//Generate @media specific
+@each $name,
+$value in $breakpoints {
+  @media #{$value} {
+    @for $i from 1 through $max-columns {
+      .#{$prefix}-#{$name}-#{$i} {
+        @include rowMachine($i, $max-columns, $gutter-width);
+      }
+    }
+  }
+}
