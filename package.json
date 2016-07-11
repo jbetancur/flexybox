@@ -1,7 +1,7 @@
 {
   "name": "flexybox",
   "version": "0.1.0",
-  "description": "simple flex",
+  "description": "a simple lightweight cross browser flex grid framework written in SCSS",
   "scripts": {
     "build": "gulp"
   },
