@@ -141,13 +141,13 @@ $breakpoints: (
   }
 }
 
-.column {
+.column .flex-column {
   @extend %flexit;
   @extend %styles;
   flex-direction: column;
 }
 
-.row {
+.row, .flex-row {
   @extend %flexit;
   @extend %styles;
   flex-direction: row;
