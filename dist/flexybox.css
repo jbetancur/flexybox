@@ -7,7 +7,8 @@
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  width: 100%; }
 
 .column .no-gutter.flex-column [class^="flex"], .no-gutter.row [class^="flex"], .no-gutter.flex-row [class^="flex"] {
   margin: 0; }

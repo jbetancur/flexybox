@@ -238,7 +238,7 @@
 
 
 
-           <span class="subtitle">No Gutters</span>
+           <!--<span class="subtitle">No Gutters</span>
             <p>Remove gutters for all flex children in a row</p>
             <div class="flex-row no-gutter">
                 <div class="flex-6">
@@ -260,7 +260,7 @@
        &lt;/div&gt;
      &lt;/div&gt;
     </code>
-  </pre>
+  </pre>-->
 
             <span class="subtitle">Wrappable</span>
             <p>By default Flexy Boxes are wrappable. Stack as many as you want and they will wrap to the next line. If
@@ -361,7 +361,7 @@
                 <div class="flex-9">
                     <div class="demo-item min"></div>
                 </div>
-                <div class="flex">
+                <div class="flex no-wrap">
                     <div class="demo-item min">will flex</div>
                 </div>
                 <div class="flex">
@@ -380,7 +380,7 @@
      &lt;/div&gt;
 
      // No Wrapping
-    &lt;div class="row no-wrap"&gt;
+    &lt;div class="flex-row no-wrap"&gt;
        &lt;div class="flex-1"&gt;
          ...
        &lt;/div&gt;
@@ -394,11 +394,11 @@
        &lt;/div&gt;
 
        &lt;div class="flex-2"&gt;
-         ...
+         will flex
        &lt;/div&gt;
 
        &lt;div class="flex-1 grow"&gt;
-         will grow
+         will flex
        &lt;/div&gt;
          ...
      &lt;/div&gt;
