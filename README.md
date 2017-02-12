@@ -26,12 +26,12 @@ to auto prefix.
 ## CodePen
 http://codepen.io/johnnyazee/pen/AXoWkm
 
-## Pre-requisites
+## Development
+### Pre-requisites
 ```
 npm install -g yarn
 ```
 
-## Development
 You must be running nodejs version => 6.3.0
 ```
 yarn install
