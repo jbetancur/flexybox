@@ -15,7 +15,7 @@ $breakpoints: (
   margin: $gutter;
   min-width: $width;
   max-height: 100%;
-
+  flex: 0 1 $width;
   // IE 10/11 Fix to flex wrap
   -ms-flex-positive: 0;
   -ms-flex-negative: 1;
@@ -183,3 +183,4 @@ $value in $breakpoints {
     }
   }
 }
+
