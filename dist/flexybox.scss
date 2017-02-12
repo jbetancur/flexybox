@@ -1,4 +1,4 @@
-$gutter-width: .5em !default;
+$gutter-width: 1em !default;
 $max-columns: 12 !default;
 $prefix: 'flex' !default;
 
@@ -9,20 +9,20 @@ $breakpoints: (
         lg: 'only screen and (min-width: 1280px)'
 );
 
-@mixin rowMachine($numCol, $columns, $gutter) {
-  $width: calc(#{percentage($numCol / $columns)} - #{$gutter} * 2);
-  min-width: $width;
-  margin: $gutter;
+@mixin rowMachine($numCol, $columns) {
   box-sizing: border-box;
-  // Safari requires a specific width be set -_-
-  flex: 0 1 $width;
-  // IE 10/11 Fix to flex wrap -_-
+  padding: $gutter-width / 4;
+  $width: percentage($numCol / $columns);
+  min-width: $width;
+  max-height: 100%;
+
+  // IE 10/11 Fix to flex wrap
   -ms-flex-positive: 0;
   -ms-flex-negative: 1;
   -ms-flex-preferred-size: $width;
 
-  &.grow {
-    flex: 1 1 auto;
+  &.auto {
+    flex: 0 0 auto;
   }
 
   &.none {
@@ -34,10 +34,15 @@ $breakpoints: (
   flex-wrap: wrap;
   box-sizing: border-box;
   display: flex;
-  width: 100%;
 }
 
 %styles {
+  &.no-gutter {
+    [class^="flex"] {
+      padding: 0;
+    }
+  }
+
   &.no-wrap {
     flex-wrap: nowrap;
   }
@@ -153,10 +158,17 @@ $breakpoints: (
   flex-direction: row;
 }
 
+.flex {
+  flex: 1;
+  box-sizing: border-box;
+  padding: $gutter-width / 4;
+  max-height: 100%;
+}
+
 // Generate Simple
 @for $i from 1 through $max-columns {
   .#{$prefix}-#{$i} {
-    @include rowMachine($i, $max-columns, $gutter-width);
+    @include rowMachine($i, $max-columns);
   }
 }
 
@@ -166,7 +178,7 @@ $value in $breakpoints {
   @media #{$value} {
     @for $i from 1 through $max-columns {
       .#{$prefix}-#{$name}-#{$i} {
-        @include rowMachine($i, $max-columns, $gutter-width);
+        @include rowMachine($i, $max-columns);
       }
     }
   }

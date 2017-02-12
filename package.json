@@ -1,9 +1,11 @@
 {
   "name": "flexybox",
   "version": "0.3.0",
-  "description": "a simple lightweight cross browser flex grid framework written in SCSS",
+  "description": "a simple cross browser flex grid framework written in SCSS",
   "scripts": {
-    "build": "gulp"
+    "build": "gulp",
+    "deploy": "netlify deploy",
+    "build:deploy": "gulp && netlify deploy"
   },
   "repository": {
     "type": "git",
@@ -24,10 +26,10 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-clean": "^0.3.2",
-    "gulp-clean-css": "^2.0.11",
+    "gulp-clean-css": "^3.0.2",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.6.0"
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1"
   },
   "engine": "node >= 6.3.0"
 }

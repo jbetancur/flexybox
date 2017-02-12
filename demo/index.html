@@ -11,7 +11,7 @@
 <body>
 
 <div class="column">
-    <div class="container row center">
+    <div class="container flex-row center">
         <header class="hero row center-center">
             <div class="hero-title flex-6">Flexy Box</div>
             <div class="hero-subtitle flex-12">a simple lightweight cross browser flex grid</div>
@@ -40,7 +40,7 @@
             </ul>
 
             </p>
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-xs-12 flex-sm-1 flex-md-1 flex-lg-1">
                     <div class="demo-item">1</div>
                 </div>
@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-xs-12 flex-sm-2 flex-md-2 flex-lg-2">
                     <div class="demo-item">2</div>
                 </div>
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-xs-12 flex-sm-3 flex-md-3 flex-lg-3">
                     <div class="demo-item">3</div>
                 </div>
@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-xs-12 flex-sm-4 flex-md-4 flex-lg-4">
                     <div class="demo-item">4</div>
                 </div>
@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-xs-12 flex-sm-5 flex-md-5 flex-lg-5">
                     <div class="demo-item">5</div>
                 </div>
@@ -85,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-xs-12 flex-sm-6 flex-md-6 flex-lg-6">
                     <div class="demo-item">6</div>
                 </div>
@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-xs-12 flex-sm-7 flex-md-7 flex-lg-7">
                     <div class="demo-item">7</div>
                 </div>
@@ -103,7 +103,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-xs-12 flex-sm-8 flex-md-8 flex-lg-8">
                     <div class="demo-item">8</div>
                 </div>
@@ -112,7 +112,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-xs-12 flex-sm-9 flex-md-9 flex-lg-9">
                     <div class="demo-item">9</div>
                 </div>
@@ -121,7 +121,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-xs-12 flex-sm-10 flex-md-10 flex-lg-10">
                     <div class="demo-item">10</div>
                 </div>
@@ -130,7 +130,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-xs-12 flex-sm-11 flex-md-11 flex-lg-11">
                     <div class="demo-item">11</div>
                 </div>
@@ -141,14 +141,14 @@
 
   <pre>
     <code>
-     &lt;div class="row"&gt;
+     &lt;div class="flex-row"&gt;
        &lt;div class="flex-xs-12 flex-sm-1 flex-md-1 flex-lg-1"&gt;
        &lt;/div&gt;
        &lt;div class="flex-xs-12 flex-sm-11 flex-md-11 flex-lg-11"&gt;
        &lt;/div&gt;
      &lt;/div&gt;
 
-     &lt;div class="row"&gt;
+     &lt;div class="flex-row"&gt;
        &lt;div class="flex-xs-12 flex-sm-2 flex-md-2 flex-lg-2"&gt;
        &lt;/div&gt;
        &lt;div class="flex-xs-12 flex-sm-10 flex-md-10 flex-lg-10"&gt;
@@ -159,11 +159,11 @@
   </pre>
 
 
-            <span class="subtitle">Real World Example</span>
+            <span class="subtitle">Layout Example</span>
             <p>Cool, let's use this to create a complete page layout. Notice we set a default class on each element
                 'flex-*' and a 'flex-xs-*' class to change the Flexy Boxes to stack at full page width when the browser
                 size drops below 600px.</p>
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-12">
                     <div class="demo-item">header</div>
                 </div>
@@ -187,7 +187,7 @@
 
   <pre>
       <code>
-        &lt;div class="row"&gt;
+        &lt;div class="flex-row"&gt;
             &lt;div class="flex-12"&gt;
                 &lt;div&gt;header&lt;/div&gt;
             &lt;/div&gt;
@@ -214,7 +214,7 @@
 
             <span class="subtitle">Responsive Shortcuts</span>
             <p>You can also use shortcuts to set consistent responsiveness across any device type </p>
-            <div class="row no-wrap">
+            <div class="flex-row no-wrap">
                 <div class="flex-4">
                     <div class="demo-item"></div>
                 </div>
@@ -225,7 +225,7 @@
 
   <pre>
     <code>
-     &lt;div class="row"&gt;
+     &lt;div class="flex-row"&gt;
        &lt;div class="flex-4"&gt;
          ...
        &lt;/div&gt;
@@ -237,11 +237,36 @@
   </pre>
 
 
+
+           <span class="subtitle">No Gutters</span>
+            <p>Remove gutters for all flex children in a row</p>
+            <div class="flex-row no-gutter">
+                <div class="flex-6">
+                    <div class="demo-item"></div>
+                </div>
+                <div class="flex-6">
+                    <div class="demo-item"></div>
+                </div>
+            </div>
+
+  <pre>
+    <code>
+     &lt;div class="flex-row no-gutter"&gt;
+       &lt;div class="flex-6"&gt;
+         ...
+       &lt;/div&gt;
+       &lt;div class="flex-6"&gt;
+         ...
+       &lt;/div&gt;
+     &lt;/div&gt;
+    </code>
+  </pre>
+
             <span class="subtitle">Wrappable</span>
             <p>By default Flexy Boxes are wrappable. Stack as many as you want and they will wrap to the next line. If
                 you want to wrap boxes, make sure to set a min-width.</p>
 
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-1">
                     <div class="demo-item min"></div>
                 </div>
@@ -286,7 +311,7 @@
                 that setting a combined 'min-width' that is larger that your screen on an element may cause the Flexy
                 Box to bleed.</p>
 
-            <div class="row no-wrap">
+            <div class="flex-row no-wrap">
                 <div class="flex-1">
                     <div class="demo-item"></div>
                 </div>
@@ -326,28 +351,28 @@
             </div>
 
 
-            <span class="subtitle">Grow (Fill)</span>
+            <span class="subtitle">flex (fill)</span>
             <p>
-                Resize the browser to see "will grow" item expand to a max width of 100% after it wraps. To grow (fill) a specific item
-                add the 'grow' class
+                Resize the browser to see "will grow" item expand to a max width of 100% after it wraps. To fill a specific item
+                add just use the 'flex' class
             </p>
 
-            <div class="row">
+            <div class="flex-row">
                 <div class="flex-9">
                     <div class="demo-item min"></div>
                 </div>
-                <div class="flex-2">
-                    <div class="demo-item min"></div>
+                <div class="flex">
+                    <div class="demo-item min">will flex</div>
                 </div>
-                <div class="flex-1 grow">
-                    <div class="demo-item min">will grow</div>
+                <div class="flex">
+                    <div class="demo-item min">will flex</div>
                 </div>
             </div>
 
   <pre>
     <code>
      //Wrap
-     &lt;div class="row"&gt;
+     &lt;div class="flex-row"&gt;
        &lt;div class="flex-1"&gt;
          ...
        &lt;/div&gt;
@@ -363,7 +388,7 @@
      &lt;/div&gt;
 
     // Grow a specific item
-    &lt;div class="row"&gt;
+    &lt;div class="flex-row"&gt;
        &lt;div class="flex-9"&gt;
          ...
        &lt;/div&gt;
@@ -408,7 +433,7 @@
 
    <pre>
     <code>
-     &lt;div class="row {horizontal}-{vertical}"&gt;
+     &lt;div class="flex-row {horizontal}-{vertical}"&gt;
        &lt;div class="flex-1"&gt;
        &lt;/div&gt;
      &lt;/div&gt;
@@ -416,7 +441,7 @@
   </pre>
 
             <p>start-start</p>
-            <div class="row start-start positioning tall">
+            <div class="flex-row start-start positioning tall">
                 <div class="flex-2">
                     <div class="demo-item"></div>
                 </div>
@@ -426,7 +451,7 @@
             </div>
 
             <p>center-center</p>
-            <div class="row center-center positioning tall">
+            <div class="flex-row center-center positioning tall">
                 <div class="flex-2">
                     <div class="demo-item"></div>
                 </div>
@@ -436,7 +461,7 @@
             </div>
 
             <p>end-end</p>
-            <div class="row end-end positioning tall">
+            <div class="flex-row end-end positioning tall">
                 <div class="flex-2">
                     <div class="demo-item"></div>
                 </div>
@@ -463,12 +488,12 @@
 
   <pre>
     <code>
-     &lt;div class="row space-between-{vertical}"&gt;
+     &lt;div class="flex-row space-between-{vertical}"&gt;
        &lt;div class="flex-1"&gt;
        &lt;/div&gt;
      &lt;/div&gt;
 
-     &lt;div class="row space-around-{vertical}"&gt;
+     &lt;div class="flex-row space-around-{vertical}"&gt;
        &lt;div class="flex-1"&gt;
        &lt;/div&gt;
      &lt;/div&gt;
@@ -477,7 +502,7 @@
   </pre>
 
             <p>space-between-start</p>
-            <div class="row space-between-start positioning tall">
+            <div class="flex-row space-between-start positioning tall">
                 <div class="flex-2">
                     <div class="demo-item"></div>
                 </div>
@@ -487,7 +512,7 @@
             </div>
 
             <p>space-around-center</p>
-            <div class="row space-around-center positioning tall">
+            <div class="flex-row space-around-center positioning tall">
                 <div class="flex-2">
                     <div class="demo-item"></div>
                 </div>
@@ -501,7 +526,7 @@
             </div>
 
             <p>space-between-end</p>
-            <div class="row space-between-end positioning tall">
+            <div class="flex-row space-between-end positioning tall">
                 <div class="flex-2">
                     <div class="demo-item"></div>
                 </div>
